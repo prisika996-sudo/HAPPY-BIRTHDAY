@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>For My Favourite Person 💗</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#120d20;color:#fff;font-family:system-ui,-apple-system,Segoe UI,sans-serif;overflow-x:hidden}
+.screen{min-height:100vh;display:none;align-items:center;justify-content:center;padding:25px 18px}
+.screen.show{display:flex;animation:fade .8s ease}
+.card{width:min(470px,100%);padding:32px 22px;border-radius:30px;text-align:center;background:#ffffff10;border:1px solid #ffffff1c;box-shadow:0 20px 80px #0008;backdrop-filter:blur(15px)}
+h1{font-size:clamp(2.1rem,9vw,4rem);line-height:1.05;margin:12px 0}
+h2{font-size:1.7rem;margin:12px 0}
+p{font-size:1.05rem;line-height:1.75;color:#eee}
+button{border:0;border-radius:30px;padding:14px 24px;margin:8px;background:linear-gradient(135deg,#ff5f9e,#9b72ff);color:#fff;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 8px 25px #0004}
+input{width:100%;padding:15px;border-radius:15px;border:1px solid #ffffff2c;background:#0005;color:#fff;text-align:center;font-size:1rem;outline:none}
+.emoji{font-size:4.5rem;animation:bob 1.8s infinite ease-in-out}
+@keyframes bob{50%{transform:translateY(-12px) rotate(4deg)}}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.party{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:20}
+.dance{position:absolute;font-size:35px;animation:dance 5s linear infinite}
+@keyframes dance{0%{transform:translateY(110vh) rotate(0)}50%{transform:translateY(40vh) rotate(180deg) scale(1.3)}100%{transform:translateY(-15vh) rotate(360deg)}}
+.photo{height:230px;border-radius:22px;margin:18px 0;background:linear-gradient(135deg,#f78db9,#8e7cf5);display:flex;align-items:center;justify-content:center;font-size:4rem;box-shadow:0 12px 35px #0005}
+.photo img{width:100%;height:100%;object-fit:cover;border-radius:22px}
+.memory{margin:25px 0;padding:20px;border-radius:24px;background:#ffffff0d;border:1px solid #ffffff14}
+.memory p{font-size:1.08rem}
+.tag{display:inline-block;padding:7px 12px;border-radius:20px;background:#ffffff12;color:#ffb4d4}
+.divider{height:1px;background:#ffffff18;margin:28px 0}
+.envelope{background:#f7d9e6;color:#4b2636;border-radius:20px;padding:28px;margin:20px 0;cursor:pointer;transition:.3s}
+.envelope:hover{transform:scale(1.02)}
+.letter{display:none;text-align:left;background:#fff7f9;color:#472f38;padding:25px;border-radius:18px;line-height:1.8}
+.letter.show{display:block;animation:fade .5s}
+.progress{position:fixed;top:0;left:0;height:5px;background:#ff6ba9;width:0;z-index:99}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="party" id="party"></div>
+
+<section class="screen show" id="s1">
+<div class="card">
+<div class="emoji">🔐</div><span class="tag">PRIVATE DIGITAL GIFT</span>
+<h1>For You.</h1>
+<p>This is not just a birthday message.<br>There is something waiting for you inside.</p>
+<input id="pass" placeholder="Enter the secret word">
+<br><button onclick="unlock()">UNLOCK MY GIFT 💌</button>
+<p id="wrong"></p>
+</div>
+</section>
+
+<section class="screen" id="s2"><div class="card">
+<div class="emoji">👀</div><h2>Okay...</h2>
+<p>You actually got in.</p>
+<p>But before I give you anything...</p>
+<p><b>Are you ready?</b></p>
+<button onclick="show('s3')">YESSS 💗</button>
+<button onclick="tease()">NO 😌</button>
+<p id="tease"></p>
+</div></section>
+
+<section class="screen" id="s3"><div class="card">
+<div class="emoji">🎂</div><h1>HAPPY<br>BIRTHDAY!!!</h1>
+<p>YES. THIS ENTIRE THING IS FOR YOU.</p>
+<button onclick="celebrate()">LET'S CELEBRATE 🎉</button>
+</div></section>
+
+<section class="screen" id="s4"><div class="card">
+<div class="emoji">🎉</div><h1>IT'S YOUR DAYYYYY!</h1>
+<p>🎂 🎈 🎊 💃 🕺 ✨ 💖 🥳</p>
+<p>There is officially no escaping the birthday celebration now.</p>
+<button onclick="party()">MAKE IT LOUDER 🔊</button>
+<button onclick="show('s5')">Okay okay... 😂</button>
+</div></section>
+
+<section class="screen" id="s5"><div class="card">
+<span class="tag">THE PARTY IS OVER... FOR NOW</span>
+<h2>Now let's talk about something more important.</h2>
+<div class="divider"></div>
+<div class="emoji">📸</div>
+<h1>US.</h1>
+<p>Because a birthday is not only about saying “Happy Birthday.”</p>
+<p>It's also about remembering the people who made ordinary days feel special.</p>
+<button onclick="show('s6')">OPEN OUR MEMORIES →</button>
+</div></section>
+
+<section class="screen" id="s6"><div class="card">
+<span class="tag">MEMORY 01</span>
+
+<h2>You make me laugh.</h2>
+<p>You are the one who can make me laugh even when I wasn't planning to smile.</p>
+<button onclick="show('s7')">NEXT MEMORY →</button>
+</div></section>
+
+<section class="screen" id="s7"><div class="card">
+<span class="tag">MEMORY 02</span>
+<h2>I still tell you everything.</h2>
+<p>The random things. The serious things. The completely unnecessary things. Somehow, you are still one of the first people I want to share things with.</p>
+<button onclick="show('s8')">NEXT MEMORY →</button>
+</div></section>
+
+<section class="screen" id="s8"><div class="card">
+<span class="tag">MEMORY 03</span>
+<h2>It's the little things.</h2>
+<p>Our random conversations, stupid jokes, unexpected laughs and tiny moments somehow became some of my favourite memories.</p>
+<button onclick="show('s9')">NEXT MEMORY →</button>
+</div></section>
+
+<section class="screen" id="s9"><div class="card">
+<span class="tag">MEMORY 04</span>
+<h2>And we're not done.</h2>
+<p>We've already made so many memories, but I hope this is only a small part of a much longer story.</p>
+<button onclick="show('s10')">KEEP GOING 💗</button>
+</div></section>
+
+<section class="screen" id="s10"><div class="card">
+<div class="emoji">💌</div><h1>Things I Want You To Know</h1>
+<div class="memory"><b>ONE</b><p>You make boring days better.</p></div>
+<div class="memory"><b>TWO</b><p>You make me laugh way more than you probably realise.</p></div>
+<div class="memory"><b>THREE</b><p>I love that I can share random parts of my life with you.</p></div>
+<div class="memory"><b>FOUR</b><p>Some people become memories. Some people keep becoming memories. You're the second one.</p></div>
+<button onclick="show('s11')">THERE'S MORE →</button>
+</div></section>
+
+<section class="screen" id="s11"><div class="card">
+<div class="emoji">✉️</div><h1>A Letter For You</h1>
+<div class="envelope" onclick="document.getElementById('letter').classList.add('show')">
+💌 TAP TO OPEN<br><small>This one is actually from me.</small>
+</div>
+<div class="letter" id="letter">
+<p>Happy Birthday to my favorite human. ❤️</p>
+<p>its honestly a miracle we've made it this far considering we share literally everything. Thank you for always listening to my crazy drama and comforting me. My favorite thing about us is how we always make awkard situation ten times worse by laughing at them. I love how we can turn any embrassing or awkard moment into a total comedy show.thank you for sharing literally everything with me and for being my free therapist. I hope your birthday is just like our friendship - totally chaotic anf full of non-stop laughing!🫶</p>
+<p><b>Happy Birthdayyyyy! 🎂🎉💗</b></p>
+</div>
+<button onclick="show('s12')">ONE LAST SURPRISE →</button>
+</div></section>
+
+<section class="screen" id="s12"><div class="card">
+<div class="emoji">🎁</div><h1>WAIT.</h1>
+<p>You thought the gift was finished?</p>
+<p>Absolutely not.</p>
+<button onclick="finale()">OPEN THE LAST SURPRISE 🎁</button>
+</div></section>
+
+<section class="screen" id="s13"><div class="card">
+<div class="emoji">🌟</div>
+<h1>MORE MEMORIES<br>COMING SOON.</h1>
+<p>This little digital gift ends here...</p>
+<p>but the actual story doesn't.</p>
+<div class="divider"></div>
+<h2>Next chapter:</h2>
+<p>More photos.<br>More laughing.<br>More random conversations.<br>More memories.<br>More us.</p>
+<button onclick="party();show('s14')">CELEBRATE ONE MORE TIME 🎉</button>
+</div></section>
+
+<section class="screen" id="s14"><div class="card">
+<div class="emoji">🎂🎉💃🕺🎈</div>
+<h1>HAPPY BIRTHDAYYYYY!</h1>
+<p style="font-size:1.3rem">🎉 🎉 🎉 🎉 🎉</p>
+<p>You deserve the happiest, funniest, most unforgettable day.</p>
+<p><b>Now go celebrate. And don't forget who made this ridiculously long gift for you. 😂❤️</b></p>
+<p style="font-size:2rem">💖✨🥳🎂🎊🎈💃🕺✨💖</p>
+</div></section>
+
+<script>
+const PASSWORD="BIRTHDAY";
+function show(id){
+ document.querySelectorAll('.screen').forEach(x=>x.classList.remove('show'));
+ document.getElementById(id).classList.add('show'); window.scrollTo(0,0);
+}
+function unlock(){
+ if(document.getElementById('pass').value.trim().toUpperCase()===PASSWORD){show('s2')}
+ else document.getElementById('wrong').textContent="Not quite 😭 Try again.";
+}
+function tease(){document.getElementById('tease').textContent="You pressed NO? That's cute. Try again. 😂"}
+function party(){
+ const p=document.getElementById('party');
+ const e=['🎉','🎈','🎂','💖','✨','🥳','💃','🕺','🎊','⭐'];
+ for(let i=0;i<35;i++){
+  const d=document.createElement('span');d.className='dance';d.textContent=e[Math.floor(Math.random()*e.length)];
+  d.style.left=Math.random()*100+'vw';d.style.animationDelay=(Math.random()*2)+'s';d.style.animationDuration=(3+Math.random()*3)+'s';
+  p.appendChild(d);setTimeout(()=>d.remove(),6500);
+ }
+}
+function celebrate(){party();show('s4')}
+function finale(){party();show('s13')}
+window.addEventListener('scroll',()=>{let h=document.documentElement.scrollHeight-innerHeight;document.getElementById('progress').style.width=(scrollY/h*100)+'%'})
+</script>
+</body>
+</html>
